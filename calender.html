@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calender</title>
+
+    <style>
+        * {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+        }
+
+        body {
+            padding: 10px 24vw;
+            height: 100%;
+        }
+
+        input {
+            outline: none;
+            border: 1px solid #18181855;
+            padding: 8px 12px;
+            background-color: #f0f0f0;
+        }
+
+        input[type="date"] {
+            cursor: pointer;
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            outline: none;
+            border: none;
+            cursor: pointer;
+            background-color: #181818;
+            color: #f0f0f0;
+            letter-spacing: 1px;
+        }
+
+        button:hover {
+            box-shadow: 0px 0px 10px 1px #00000055;
+        }
+
+        .meeting {
+            padding: 12px 24px;
+            background-color: #f0f0f0;
+            height: 100%;
+        }
+    </style>
+
+    <link rel="stylesheet" href="calendar.css">
+</head>
+
+<body>
+    <div class="meeting">
+        <h2>Meeting Details</h2>
+        <form action="post">
+            <label for="name">Client Name: </label>
+            <input type="text" name="name" id="name"> <br> <br>
+            <label for="vehicle2">First Meeting? </label>
+            <input type="checkbox" name="vehicle2" value="Car"><br><br>
+            <label for="cType">Client Type: </label>
+            <input type="radio" id="male" name="cType" value="school">
+            <label for="male">School</label>
+            <input type="radio" id="female" name="cType" value="college">
+            <label for="female">College</label>
+            <input type="radio" id="notsay" name="cType" value="university">
+            <label for="female">University</label>
+            <br><br>
+            <label for="mdate">Meeting Date:</label>
+            <input type="date" id="mdate" name="mdate">
+            <br>
+            <button type="submit">Submit</button>
+            <button type="reset">Reset</button>
+        </form>
+    </div>
+</body>
+
+</html>

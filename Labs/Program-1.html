@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab | Prog 1</title>
+    <style>
+        html {
+            font-family: 'Product Sans';
+        }
+
+        body {
+            display: flex;
+            justify-self: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 24px 20px;
+        }
+
+        th {
+            background-color: #ececff;
+        }
+
+        th,
+        td {
+            height: 3rem;
+            min-width: 6rem;
+            text-align: center;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        #output {
+            background-color: #ecffec;
+            height: 6rem;
+            padding: 4px 12px;
+            cursor: text;
+            border: 1px solid #18181822;
+            border-radius: 8px;
+            font-size: 32px;
+            text-align: end;
+            vertical-align: bottom;
+        }
+
+        .action {
+            background-color: #cecece;
+        }
+
+        .tile {
+            transition-duration: 180ms;
+        }
+
+        .tile:hover {
+            background-color: #bbe;
+        }
+
+        #cancel {
+            background-color: #ffacac;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Calculator</h1>
+    <table id="calculator">
+        <tr>
+            <th id="output" colspan="4"></th>
+        </tr>
+        <tr>
+            <th class="tile">7</th>
+            <th class="tile">8</th>
+            <th class="tile">9</th>
+            <th class="tile action" id="plus">+</th>
+        </tr>
+        <tr>
+            <th class="tile">6</th>
+            <th class="tile">5</th>
+            <th class="tile">4</th>
+            <th class="tile action" id="minus">-</th>
+        </tr>
+        <tr>
+            <th class="tile">3</th>
+            <th class="tile">2</th>
+            <th class="tile">1</th>
+            <th class="tile action" id="mul">*</th>
+        </tr>
+        <tr>
+            <th class="tile action" id="cancel">C</th>
+            <th class="tile">0</th>
+            <th class="tile action" id="equals">=</th>
+            <th class="tile action" id="divide">/</th>
+        </tr>
+    </table>
+
+</body>
+
+<script type="text/javascript">
+
+    const tiles = document.querySelectorAll('.tile');
+    document.getElementById('output').innerText = "";
+
+    document.addEventListener('keydown', function (event) {
+        const key = event.key;
+        if (key === "Backspace") {
+            document.getElementById('output').innerText = document.getElementById('output').innerText.replace(/.$/, '')
+        } else if (key === "Enter") {
+            evaluate();
+        }
+    })
+
+    for (let i = 0; i < tiles.length; i++) {
+        tiles[i].addEventListener('click', tileClick, false);
+    }
+
+    function tileClick(e) {
+        const tileVal = e.target.innerText;
+        if (tileVal == 'C') {
+            document.getElementById('output').innerText = "";
+        }
+        else if (tileVal == '=') {
+            evaluate();
+        } else {
+            let expression = document.getElementById('output').innerText;
+            if (tileVal.match(/[\+\-\*\/]/)) {
+                if (!expression.charAt(expression.length - 1).match(/[0-9]/)) {
+                    expression = expression.replace(/.$/, tileVal)
+                    document.getElementById('output').innerText = expression;
+                }
+                else
+                    document.getElementById('output').innerText += tileVal;
+            } else
+                document.getElementById('output').innerText += tileVal;
+        }
+    }
+
+    function evaluate() {
+        let expression = document.getElementById('output').innerText;
+        if (expression.length !== 0)
+            document.getElementById('output').innerText = eval(expression);
+    }
+</script>
+
+</html>

@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab | Prog 2</title>
+    <style>
+        html {
+            font-family: 'Product Sans';
+        }
+
+        body {
+            display: flex;
+            justify-self: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #acacec;
+        }
+
+        th {
+            background-color: #f0f0f0;
+        }
+
+        td {
+            background-color: #fcfcff;
+        }
+
+        th,
+        td {
+            height: 2rem;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <table style="width:600px" id="table">
+        <tr>
+            <th colspan="3">Squares & Cubes</th>
+        </tr>
+        <tr>
+            <th>Number</th>
+            <th>Square</th>
+            <th>Cube</th>
+        </tr>
+    </table>
+</body>
+
+<script type="text/javascript">
+    let table = document.getElementById('table');
+    const n = parseInt(prompt('Enter a number.', '10'));
+
+    const getSquare = n => n * n;
+
+    const getCube = n => n * n * n;
+
+    if (typeof n == "number" && n <= 10)
+
+        for (let i = 0; i <= n; i++) {
+            table.innerHTML += `
+        <tr>
+            <td>${i}</td>
+            <td>${getSquare(i)}</td>
+            <td>${getCube(i)}</td>
+        </tr>`
+        }
+
+    else alert('You need to input value between 0 & 10!');
+</script>
+
+</html>
