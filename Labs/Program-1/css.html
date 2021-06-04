@@ -1,0 +1,88 @@
+<html>
+
+<head>
+    <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+    <style>
+        pre {
+            background-color: #e9e9e9;
+            color: black;
+            font-size: 16px;
+            border-radius: 4px;
+            padding: 12px 40px;
+            min-width: 60%;
+            font-weight: 900;
+            border-radius: 8px;
+
+            white-space: pre-wrap;
+            /* Since CSS 2.1 */
+            white-space: -moz-pre-wrap;
+            /* Mozilla, since 1999 */
+            white-space: -pre-wrap;
+            /* Opera 4-6 */
+            white-space: -o-pre-wrap;
+            /* Opera 7 */
+            word-wrap: break-word;
+        }
+
+        code {
+            font-family: 'Fira Code', monospace;
+        }
+    </style>
+</head>
+
+<body>
+    <pre>
+        <code class="prettyprint">
+            body {
+                display: flex;
+                justify-self: center;
+                align-items: center;
+                flex-direction: column;
+                padding: 24px 20px;
+            }
+            
+            th {
+                background-color: #ececff;
+            }
+            
+            th,
+            td {
+                height: 3rem;
+                min-width: 6rem;
+                text-align: center;
+                cursor: pointer;
+                border-radius: 4px;
+            }
+            
+            #output {
+                background-color: #ecffec;
+                height: 6rem;
+                padding: 4px 12px;
+                cursor: text;
+                border: 1px solid #18181822;
+                border-radius: 8px;
+                font-size: 32px;
+                text-align: end;
+                vertical-align: bottom;
+            }
+            
+            .action {
+                background-color: #cecece;
+            }
+            
+            .tile {
+                transition-duration: 180ms;
+            }
+            
+            .tile:hover {
+                background-color: #bbe;
+            }
+            
+            #cancel {
+                background-color: #ffacac;
+            }
+            </code>
+    </pre>
+</body>
+
+</html>

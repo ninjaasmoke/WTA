@@ -17,6 +17,11 @@
             align-items: center;
             flex-direction: column;
             padding: 24px 20px;
+            background-color: #181818;
+        }
+
+        h1 {
+            color: #fefefe;
         }
 
         th {
@@ -92,10 +97,30 @@
             padding: 12px 40px;
             min-width: 60%;
             font-weight: 900;
+            border-radius: 8px;
+
+            white-space: pre-wrap;
+            /* Since CSS 2.1 */
+            white-space: -moz-pre-wrap;
+            /* Mozilla, since 1999 */
+            white-space: -pre-wrap;
+            /* Opera 4-6 */
+            white-space: -o-pre-wrap;
+            /* Opera 7 */
+            word-wrap: break-word;
         }
 
         code {
             font-family: 'Fira Code', monospace;
+        }
+
+        iframe {
+            width: 60%;
+            min-height: 100vh;
+        }
+
+        iframe[seamless] {
+            border: none;
         }
     </style>
 </head>
@@ -138,41 +163,7 @@
         <div class="tab" id="JS" onclick="setCode('JS')">JS</div>
     </div>
 
-    <pre id="showCode">
-<code>
-
-&lt;table id="calculator"&gt;   
-    &lt;tr&gt;
-        &lt;th id="output" colspan="4"&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th class="tile"&gt;7&lt;/th&gt;
-        &lt;th class="tile"&gt;8&lt;/th&gt;
-        &lt;th class="tile"&gt;9&lt;/th&gt;
-        &lt;th class="tile action" id="plus"&gt;+&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th class="tile"&gt;6&lt;/th&gt;
-        &lt;th class="tile"&gt;5&lt;/th&gt;
-        &lt;th class="tile"&gt;4&lt;/th&gt;
-        &lt;th class="tile action" id="minus"&gt;-&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th class="tile"&gt;3&lt;/th&gt;
-        &lt;th class="tile"&gt;2&lt;/th&gt;
-        &lt;th class="tile"&gt;1&lt;/th&gt;
-        &lt;th class="tile action" id="mul"&gt;*&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th class="tile action" id="cancel"&gt;C&lt;/th&gt;
-        &lt;th class="tile"&gt;0&lt;/th&gt;
-        &lt;th class="tile action" id="equals"&gt;=&lt;/th&gt;
-        &lt;th class="tile action" id="divide"&gt;/&lt;/th&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
-
-</code>
-    </pre>
+    <iframe src="../Labs/Program-1/html.html" seamless id="showCode"></iframe>
 
 </body>
 
@@ -221,146 +212,21 @@
             document.getElementById('output').innerText = eval(expression);
     }
 
+
+    const code = {
+        HTML: `../Labs/Program-1/html.html`,
+        CSS: `../Labs/Program-1/css.html`,
+        JS: `../Labs/Program-1/js.html`
+    }
+
+
+    document.getElementById('showCode').innerHTML = code['HTML'];
+
     function setCode(name) {
         console.log(name)
         document.querySelectorAll('.tab').forEach(e => e.classList.remove('selectedTab'))
         document.getElementById(name).classList.add('selectedTab')
-
-        const code = {
-            HTML: `
-<code>
-&lt;table id="calculator"&gt;   
-    &lt;tr&gt;
-        &lt;th id="output" colspan="4"&gt;&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th class="tile"&gt;7&lt;/th&gt;
-        &lt;th class="tile"&gt;8&lt;/th&gt;
-        &lt;th class="tile"&gt;9&lt;/th&gt;
-        &lt;th class="tile action" id="plus"&gt;+&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th class="tile"&gt;6&lt;/th&gt;
-        &lt;th class="tile"&gt;5&lt;/th&gt;
-        &lt;th class="tile"&gt;4&lt;/th&gt;
-        &lt;th class="tile action" id="minus"&gt;-&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th class="tile"&gt;3&lt;/th&gt;
-        &lt;th class="tile"&gt;2&lt;/th&gt;
-        &lt;th class="tile"&gt;1&lt;/th&gt;
-        &lt;th class="tile action" id="mul"&gt;*&lt;/th&gt;
-    &lt;/tr&gt;
-    &lt;tr&gt;
-        &lt;th class="tile action" id="cancel"&gt;C&lt;/th&gt;
-        &lt;th class="tile"&gt;0&lt;/th&gt;
-        &lt;th class="tile action" id="equals"&gt;=&lt;/th&gt;
-        &lt;th class="tile action" id="divide"&gt;/&lt;/th&gt;
-    &lt;/tr&gt;
-&lt;/table&gt;
-</code>
-            `,
-            CSS: `
-<code>
-body {
-    display: flex;
-    justify-self: center;
-    align-items: center;
-    flex-direction: column;
-    padding: 24px 20px;
-}
-
-th {
-    background-color: #ececff;
-}
-
-th,
-td {
-    height: 3rem;
-    min-width: 6rem;
-    text-align: center;
-    cursor: pointer;
-    border-radius: 4px;
-}
-
-#output {
-    background-color: #ecffec;
-    height: 6rem;
-    padding: 4px 12px;
-    cursor: text;
-    border: 1px solid #18181822;
-    border-radius: 8px;
-    font-size: 32px;
-    text-align: end;
-    vertical-align: bottom;
-}
-
-.action {
-    background-color: #cecece;
-}
-
-.tile {
-    transition-duration: 180ms;
-}
-
-.tile:hover {
-    background-color: #bbe;
-}
-
-#cancel {
-    background-color: #ffacac;
-}
-</code>
-            `,
-            JS: `
-<code>
-const tiles = document.querySelectorAll('.tile');
-document.getElementById('output').innerText = "";
-
-document.addEventListener('keydown', function (event) {
-    const key = event.key;
-    if (key === "Backspace") {
-        document.getElementById('output').innerText = document.getElementById('output').innerText.replace(/.$/, '')
-    } else if (key === "Enter") {
-        evaluate();
-    }
-})
-
-for (let i = 0; i < tiles.length; i++) {
-    tiles[i].addEventListener('click', tileClick, false);
-}
-
-function tileClick(e) {
-    const tileVal = e.target.innerText;
-    if (tileVal == 'C') {
-        document.getElementById('output').innerText = "";
-    }
-    else if (tileVal == '=') {
-        evaluate();
-    } else {
-        let expression = document.getElementById('output').innerText;
-        if (tileVal.match(/[\+\-\*\/]/)) {
-            if (!expression.charAt(expression.length - 1).match(/[0-9]/)) {
-                expression = expression.replace(/.$/, tileVal)
-                document.getElementById('output').innerText = expression;
-            }
-            else
-                document.getElementById('output').innerText += tileVal;
-        } else
-            document.getElementById('output').innerText += tileVal;
-    }
-}
-
-function evaluate() {
-    let expression = document.getElementById('output').innerText;
-    if (expression.length !== 0)
-        document.getElementById('output').innerText = eval(expression);
-}
-</code>
-            `
-        }
-
-        document.getElementById('showCode').innerHTML = code[name];
+        document.getElementById('showCode').src = code[name];
     }
 </script>
 
