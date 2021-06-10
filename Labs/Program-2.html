@@ -19,6 +19,10 @@
             background-color: #acacac;
         }
 
+        table {
+            width: 600px;
+        }
+
         th {
             background-color: #f0f0f0;
         }
@@ -32,11 +36,62 @@
             height: 2rem;
             text-align: center;
         }
+
+        @media (max-width: 600px) {
+            table {
+                width: 100%;
+            }
+        }
+
+        .tabBar {
+            min-width: 20%;
+            max-width: 100%;
+            min-height: 40px;
+            color: #181833;
+            margin: 28px 0 12px;
+            padding: 6px 0;
+            background-color: #eef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tab {
+            padding: 12px 32px;
+            margin: 0 4px;
+            text-align: center;
+            background-color: #ddf;
+            cursor: pointer;
+        }
+
+        .selectedTab {
+            background-color: #faa;
+            font-weight: 700;
+        }
+
+        iframe {
+            width: 800px;
+            height: 80vh;
+            overflow-y: scroll;
+            padding: 12px;
+            background-color: #eef;
+        }
+
+        iframe[seamless] {
+            border: none;
+        }
+
+        @media (max-width: 800px) {
+            iframe {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <table style="width:600px" id="table">
+    <h1>Table</h1>
+    <table id="table">
         <tr>
             <th colspan="3">Squares & Cubes</th>
         </tr>
@@ -46,6 +101,13 @@
             <th>Cube</th>
         </tr>
     </table>
+    <div class="tabBar">
+        <div class="tab selectedTab" id="HTML" onclick="setCode('HTML')">HTML</div>
+        <div class="tab" id="CSS" onclick="setCode('CSS')">CSS</div>
+        <div class="tab" id="JS" onclick="setCode('JS')">JS</div>
+    </div>
+
+    <iframe src="../Labs/Program-2/html.html" seamless id="showCode"></iframe>
 </body>
 
 <script type="text/javascript">
@@ -68,6 +130,22 @@
         }
 
     else alert('You need to input value between 0 & 10!');
+
+    const code = {
+        HTML: `../Labs/Program-2/html.html`,
+        CSS: `../Labs/Program-2/css.html`,
+        JS: `../Labs/Program-2/js.html`
+    }
+
+
+    document.getElementById('showCode').innerHTML = code['HTML'];
+
+    function setCode(name) {
+        console.log(name)
+        document.querySelectorAll('.tab').forEach(e => e.classList.remove('selectedTab'))
+        document.getElementById(name).classList.add('selectedTab')
+        document.getElementById('showCode').src = code[name];
+    }
 </script>
 
 </html>
