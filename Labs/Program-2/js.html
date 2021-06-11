@@ -49,11 +49,12 @@ if (typeof n == "number" && n <= 10)
 
     for (let i = 0; i <= n; i++) {
         table.innerHTML += `
-    <tr>
-        <td>${i}</td>
-        <td>${getSquare(i)}</td>
-        <td>${getCube(i)}</td>
-    </tr>`
+        &lt;tr&gt;
+            &lt;td&gt;${i}&lt;/td&gt;
+            &lt;td&gt;${getSquare(i)}&lt;/td&gt;
+            &lt;td&gt;${getCube(i)}&lt;/td&gt;
+        &lt;/tr&gt;
+    `
     }
 
 else alert('You need to input value between 0 & 10!');
