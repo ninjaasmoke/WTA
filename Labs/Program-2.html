@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab | Prog 2</title>
     <style>
+        /* For Program */
+
         html {
             font-family: 'Product Sans';
         }
@@ -42,6 +44,9 @@
                 width: 100%;
             }
         }
+
+
+        /* Unrelated */
 
         .tabBar {
             min-width: 20%;
@@ -90,6 +95,8 @@
 </head>
 
 <body>
+    <!-- For Program -->
+
     <h1>Table</h1>
     <table id="table">
         <tr>
@@ -101,6 +108,9 @@
             <th>Cube</th>
         </tr>
     </table>
+
+    <!-- Unrelated -->
+
     <div class="tabBar">
         <div class="tab selectedTab" id="HTML" onclick="setCode('HTML')">HTML</div>
         <div class="tab" id="CSS" onclick="setCode('CSS')">CSS</div>
@@ -111,6 +121,7 @@
 </body>
 
 <script type="text/javascript">
+    // For Program
     let table = document.getElementById('table');
     const n = parseInt(prompt('Enter a number.', '10'));
 
@@ -131,6 +142,8 @@
 
     else alert('You need to input value between 0 & 10!');
 
+
+    // Unrelated
     const code = {
         HTML: `../Labs/Program-2/html.html`,
         CSS: `../Labs/Program-2/css.html`,

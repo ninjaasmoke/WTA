@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab | Prog 1</title>
     <style>
+        /* For Program */
+
         html {
             font-family: 'Product Sans';
         }
@@ -67,6 +69,9 @@
             background-color: #ffacac;
         }
 
+
+        /* Unrelated */
+
         .tabBar {
             min-width: 20%;
             max-width: 100%;
@@ -114,6 +119,8 @@
 </head>
 
 <body>
+    <!-- For Program -->
+
     <h1>Calculator</h1>
     <table id="calculator">
         <tr>
@@ -145,6 +152,9 @@
         </tr>
     </table>
 
+
+    <!-- Unrelated -->
+
     <div class="tabBar">
         <div class="tab selectedTab" id="HTML" onclick="setCode('HTML')">HTML</div>
         <div class="tab" id="CSS" onclick="setCode('CSS')">CSS</div>
@@ -156,6 +166,7 @@
 </body>
 
 <script type="text/javascript">
+    // For Program
 
     const tiles = document.querySelectorAll('.tile');
     document.getElementById('output').innerText = "";
@@ -200,6 +211,8 @@
             document.getElementById('output').innerText = eval(expression);
     }
 
+
+    // Unrelated
 
     const code = {
         HTML: `../Labs/Program-1/html.html`,
