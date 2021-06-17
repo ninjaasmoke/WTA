@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab | Prog 3</title>
+
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            font-family: 'Product Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #121212;
+            width: 100%;
+            height: 100vh;
+            display: grid;
+            place-content: center;
+            place-items: center;
+        }
+
+        #text-anim {
+            font-weight: 900;
+        }
+    </style>
+</head>
+
+<body>
+    <p id="text-anim"></p>
+</body>
+
+<script type="text/javascript">
+    const elem = document.getElementById('text-anim');
+    let fs = 5;
+    let interval2;
+
+    const increase = (fontSize = fs) => {
+        elem.innerText = "TEXT GROWING";
+        elem.style.color = "#ff4454";
+        elem.style.fontSize = `${fontSize}px`;
+        fs++;
+        if (fs > 50) {
+            clearInterval(interval1);
+            interval2 = setInterval(decrease, 100);
+        }
+    }
+
+    let interval1 = setInterval(increase, 100);
+
+    const decrease = (fontSize = fs) => {
+        elem.innerText = "TEXT SHRINKING";
+        elem.style.color = "#5444ff";
+        elem.style.fontSize = `${fontSize}px`;
+        fs--;
+        if (fs < 5) {
+            clearInterval(interval2);
+            interval1 = setInterval(increase, 100);
+        }
+    }
+
+</script>
+
+</html>
