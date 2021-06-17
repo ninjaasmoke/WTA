@@ -8,6 +8,7 @@
     <title>Lab | Prog 3</title>
 
     <style>
+        /* For Program */
         * {
             padding: 0;
             margin: 0;
@@ -24,14 +25,80 @@
             place-items: center;
         }
 
+        p {
+            width: 100%;
+            min-height: 50vh;
+            display: grid;
+            place-content: center;
+            place-items: center;
+        }
+
         #text-anim {
             font-weight: 900;
+            height: 100%;
+        }
+
+
+        /* Unrelated */
+
+        .tabBar {
+            min-width: 20%;
+            max-width: 100%;
+            min-height: 40px;
+            color: #181833;
+            margin: 28px 0 12px;
+            padding: 6px 0;
+            background-color: #eef;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .tab {
+            padding: 12px 32px;
+            margin: 0 4px;
+            text-align: center;
+            background-color: #ddf;
+            cursor: pointer;
+        }
+
+        .selectedTab {
+            background-color: #faa;
+            font-weight: 700;
+        }
+
+        iframe {
+            width: 800px;
+            height: 80vh;
+            overflow-y: scroll;
+            padding: 12px;
+            background-color: #eef;
+        }
+
+        iframe[seamless] {
+            border: none;
+        }
+
+        @media (max-width: 800px) {
+            iframe {
+                width: 100%;
+            }
         }
     </style>
 </head>
 
 <body>
+    <!-- For program -->
     <p id="text-anim"></p>
+
+    <!-- Unrelated -->
+    <div class="tabBar">
+        <div class="tab selectedTab" id="HTML" onclick="setCode('HTML')">HTML</div>
+        <div class="tab" id="CSS" onclick="setCode('CSS')">CSS</div>
+        <div class="tab" id="JS" onclick="setCode('JS')">JS</div>
+    </div>
+
+    <iframe src="../Labs/Program-3/html.html" seamless id="showCode"></iframe>
 </body>
 
 <script type="text/javascript">
@@ -61,6 +128,24 @@
             clearInterval(interval2);
             interval1 = setInterval(increase, 100);
         }
+    }
+
+    // Unrelated
+
+    const code = {
+        HTML: `../Labs/Program-3/html.html`,
+        CSS: `../Labs/Program-3/css.html`,
+        JS: `../Labs/Program-3/js.html`
+    }
+
+
+    document.getElementById('showCode').innerHTML = code['HTML'];
+
+    function setCode(name) {
+        console.log(name)
+        document.querySelectorAll('.tab').forEach(e => e.classList.remove('selectedTab'))
+        document.getElementById(name).classList.add('selectedTab')
+        document.getElementById('showCode').src = code[name];
     }
 
 </script>
