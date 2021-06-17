@@ -42,10 +42,10 @@ const elem = document.getElementById('text-anim');
 let fs = 5;
 let interval2;
 
-const increase = (fontSize = fs) => {
+const increase = () => {
     elem.innerText = "TEXT GROWING";
     elem.style.color = "#ff4454";
-    elem.style.fontSize = `${fontSize}px`;
+    elem.style.fontSize = `${fs}px`;
     fs++;
     if (fs > 50) {
         clearInterval(interval1);
@@ -55,10 +55,10 @@ const increase = (fontSize = fs) => {
 
 let interval1 = setInterval(increase, 100);
 
-const decrease = (fontSize = fs) => {
+const decrease = () => {
     elem.innerText = "TEXT SHRINKING";
     elem.style.color = "#5444ff";
-    elem.style.fontSize = `${fontSize}px`;
+    elem.style.fontSize = `${fs}px`;
     fs--;
     if (fs < 5) {
         clearInterval(interval2);
