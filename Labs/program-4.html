@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab | Prog 4</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: 'Product Sans', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        body {
+            background-color: #121218;
+            color: aliceblue;
+            height: 100vh;
+            width: 100%;
+
+            display: grid;
+            grid-template-columns: auto auto;
+            place-content: center;
+            place-items: center;
+            gap: 20px;
+        }
+
+        label {
+            font-size: 22px;
+            margin: 20px;
+        }
+
+        input {
+            outline: none;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 4px;
+            font-size: 18px;
+        }
+
+        button {
+            outline: none;
+            border: 1px solid #00808088;
+            padding: 12px 24px;
+            transition-duration: 300ms;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 900;
+            color: #008080;
+            background-color: transparent;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background-color: #008080;
+            color: aliceblue;
+        }
+
+        #op,
+        #vop {
+            padding: 20px;
+            height: 80px;
+            text-align: center;
+            font-size: 20px;
+        }
+
+        .grid-item {
+            width: 400px;
+            min-height: 300px;
+            display: flex;
+            padding: 20px;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding-top: 4px;
+
+            border: 1px solid #303038;
+            border-radius: 4px;
+        }
+
+        .head {
+            width: 100%;
+            text-align: center;
+            font-size: 24px;
+            border-bottom: 1px solid #303038;
+            padding: 12px;
+            color: #008080;
+        }
+
+        @media (max-width: 840px) {
+            body {
+                grid-template-columns: auto;
+            }
+
+            .grid-item {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="grid-item">
+        <div class="head">Part A</div>
+        <label for="strIn">Left most vowel</label>
+        <input type="text" id="strIn" name="strIn" placeholder="Enter a string" />
+        <div id="vop"></div>
+        <button id="vbtn">Find first vowel</button>
+    </div>
+
+    <div class="grid-item">
+        <div class="head">Part B</div>
+        <label for="numIn">Reverse of a number</label>
+        <input type="number" id="numIn" name="numIn" placeholder="Enter a number" />
+
+        <div id="op"></div>
+        <button id="btn">Display Reverse</button>
+    </div>
+
+</body>
+
+<script type="text/javascript">
+    // Part A
+    const vbtn = document.getElementById('vbtn');
+    vbtn.addEventListener('click', () => {
+        let str = document.getElementById('strIn').value;
+        if (str) {
+            if (str.match(/[0-9]/)) {
+                alert("Don't enter numbers!")
+            }
+            else {
+                let v = str.match(/[aeiouAEIOU]/);
+                if (v) {
+                    let vIx = str.indexOf(v[0]);
+                    document.getElementById('vop').innerText =
+                        `Left most vowel is: "${v[0]}" at ${vIx + 1} place.`;
+                }
+                else alert("Vowel not found")
+            }
+        } else alert("Invalid input");
+    })
+
+    // Part B
+    const btn = document.getElementById('btn');
+    btn.addEventListener('click', (e) => {
+        let num = document.getElementById("numIn").value;
+        if (num > 0) {
+            num = num.toString().split('').reverse().join('');
+
+            document.getElementById('op').innerText = `Reversed number is: ${num}`;
+        }
+        else {
+            alert("Enter a valid input");
+        }
+        document.getElementById("numIn").value = "";
+    })
+</script>
+
+</html>
