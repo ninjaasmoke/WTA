@@ -35,17 +35,17 @@ name, college, branch, year, e-mail {
 
 name {
     font-size: 14pt; 
-    color:Blue;
+    color: plum;
 }
 
 college {
     font-size: 12pt; 
-    color:Maroon;
+    color: orange;
 }
 
 branch{
     font-size: 12pt; 
-    color:Purple;
+    color: yellow;
 }
 
 year {
@@ -55,5 +55,5 @@ year {
 
 e-mail {
     font-size: 12pt; 
-    color:Blue;
+    color: blueviolet;
 }
